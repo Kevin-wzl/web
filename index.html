@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/pixi.min.js"></script>
+    <script>
+		var app = new PIXI.Application(3840,2160);
+        document.body.appendChild(app.view);
+        
+        var bg = new PIXI.Sprite.fromImage("res/universe.jpg");
+        var ntext = new PIXI.Text("点击任意位置进入");
+        var back = new PIXI.Sprite.fromImage("res/back.png");
+        app.stage.addChild(bg);
+        app.stage.addChild(ntext);
+        app.stage.addChild(back);
+        bg.interactive = true; 
+        back.interactive = true;
+		bg.on("click",show);
+		back.on("click",unshow);
+    	ntext.style.fill = 0xffffff;
+    	ntext.style.fontSize = 100;
+    	ntext.x=1200;
+    	ntext.y=400;
+    	back.scale.x=0.2;
+    	back.scale.y=0.2;
+    	back.x=1100;
+    	back.y=250;
+    	back.visible=false;
+    	
+
+		function show() {
+    		back.visible=true;
+    		ntext.text = "欢迎来到太阳系!\n行星探索即将开放!\n敬请期待！";
+		}
+		function unshow(){
+			back.visible=false;
+			ntext.text = "点击任意位置进入";
+		}
+    </script>
+</body>
+</html>
